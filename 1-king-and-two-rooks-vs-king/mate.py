@@ -50,8 +50,8 @@ def print_table_top_border():
           "                        " + Style.RESET_ALL)
 
 
-def print_table_rank_coordinates(i):
-    print("  " + Back.WHITE + Fore.BLACK + f"  {8 - i} ", end="")
+def print_table_rank_coordinates(rank):
+    print("  " + Back.WHITE + Fore.BLACK + f"  {rank} ", end="")
 
 
 def get_square_color(square_counter):
@@ -61,9 +61,8 @@ def get_square_color(square_counter):
         print(Back.GREEN, end="")
 
 
-def print_table_square(i, j):
-    # if
-    print(table[i][j], end=" ")
+def print_table_square(rank, file):
+    print(table[rank - 1][file - 1], end=" ")
 
 
 def print_table_right_border():
@@ -81,12 +80,12 @@ def print_table():
     system("clear")
     square_counter = 0
     print_table_top_border()
-    for i in range(8):
-        print_table_rank_coordinates(i)
-        for j in range(8):
+    for rank in range(8, 0, -1):
+        print_table_rank_coordinates(rank)
+        for file in range(1, 9):
             get_square_color(square_counter)
             square_counter += 1
-            print_table_square(i, j)
+            print_table_square(rank, file)
         square_counter += 1
         print_table_right_border()
     print_table_files_coordinates()
@@ -101,7 +100,7 @@ def play():
     print_title()
     initialize_table()
     get_initial_positions()
-    # add_positions_to_table()
+    add_positions_to_table()
     while not check_mate:
         print_table()
         # get_black_move()
