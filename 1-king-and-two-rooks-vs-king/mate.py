@@ -35,15 +35,27 @@ def add_positions_to_table():
         break
 
 
+def get_square_color(i, j, counter):
+    if counter % 2 == 0:
+        print(Back.LIGHTGREEN_EX, end="")
+    else:
+        print(Back.GREEN, end="")
+
+
 def print_table():
-    print("  ------------------- ")
+    square_counter = 0
+    print(Back.WHITE + Fore.BLACK+ "                     " + Style.RESET_ALL)
     for i in range(8):
-        print(f"{8 - i} |", end=" ")
+        print(Back.WHITE, end="")
+        print(Fore.BLACK, end="")
+        print(f" {8 - i} ", end="")
         for j in range(8):
+            get_square_color(i, j, square_counter)
+            square_counter += 1
             print(table[i][j], end=" ")
-        print("|")
-    print("  -------------------")
-    print("    A B C D E F G H")
+        square_counter += 1
+        print(Back.WHITE + Fore.BLACK + "  " + Style.RESET_ALL)
+    print(Back.WHITE + Fore.BLACK + "   A B C D E F G H   " + Style.RESET_ALL)
 
 
 def get_black_move():
@@ -53,7 +65,7 @@ def get_black_move():
 
 def play():
     initialize_table()
-    get_initial_positions()
+    # get_initial_positions()
     # add_positions_to_table()
     while not check_mate:
         print_table()
