@@ -16,7 +16,7 @@ def initialize_table():
 
 
 def transform_input_to_coordinates(index):
-    positions[index][0] = chr(ord(positions[index][0]) - 16)
+    positions[index][0] = chr(ord(positions[index][0].upper()) - 16)
     positions[index] = list(map(int, positions[index]))
     print(positions)
 
@@ -53,7 +53,7 @@ def get_black_move():
 
 def play():
     initialize_table()
-    # get_initial_positions()
+    get_initial_positions()
     # add_positions_to_table()
     while not check_mate:
         print_table()
