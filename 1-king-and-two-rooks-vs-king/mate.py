@@ -2,6 +2,7 @@ from os import system
 from colorama import Fore, Back, Style
 
 positions = [[] for i in range(4)]
+pieces = ["k", "K", "R", "R"]
 # black king = 0
 # white king = 1
 # first rook = 2
@@ -39,8 +40,10 @@ def get_initial_positions():
 
 
 def add_positions_to_table():
-    for i in range(4):
-        break
+    for index in range(4):
+        rank = positions[index][0]
+        file = positions[index][1]
+        table[rank-1][file-1] = pieces[index]
 
 
 def print_table_top_border():
@@ -95,6 +98,9 @@ def get_black_move():
     positions[0] = [char for char in input("\n  Your move: ")]
     transform_input_to_coordinates(0)
 
+def print_check_mate():
+    print("\n  Check Mate: White is victorious.\n")
+
 
 def play():
     print_title()
@@ -104,7 +110,9 @@ def play():
     while not check_mate:
         print_table()
         # get_black_move()
+        # check_mate = True
         break
+    print_check_mate()
 
 
 play()
