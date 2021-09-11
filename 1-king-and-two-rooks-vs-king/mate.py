@@ -2,10 +2,10 @@ from os import system
 from colorama import Fore, Back, Style
 
 positions = [[] for i in range(4)]
-black_king = 0
-white_king = 1
-rook1 = 2
-rook2 = 3
+# black king = 0
+# white king = 1
+# first rook = 2
+# second rook = 3
 table = [[i for i in range(8)] for j in range(8)]
 check_mate = False
 
@@ -19,7 +19,7 @@ def print_title():
 def initialize_table():
     for i in range(8):
         for j in range(8):
-            table[i][j] = "."
+            table[i][j] = " "
 
 
 def transform_input_to_coordinates(index):
@@ -62,6 +62,7 @@ def get_square_color(square_counter):
 
 
 def print_table_square(i, j):
+    # if
     print(table[i][j], end=" ")
 
 
@@ -92,7 +93,7 @@ def print_table():
 
 
 def get_black_move():
-    black_move = [char for char in input("black king move: ")]
+    positions[0] = [char for char in input("\n  Your move: ")]
     transform_input_to_coordinates(0)
 
 
