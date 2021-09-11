@@ -69,7 +69,7 @@ def print_table_square(rank, file):
         print(Fore.BLACK, end="")
     else:
         print(Fore.WHITE, end="")
-    print(table[rank - 1][file - 1], end=" ")
+    print(table[file - 1][rank - 1], end=" ")
 
 
 def print_table_right_border():
@@ -96,6 +96,7 @@ def print_table():
         square_counter += 1
         print_table_right_border()
     print_table_files_coordinates()
+    print(f"\n  {positions}")
 
 
 def get_black_move():
