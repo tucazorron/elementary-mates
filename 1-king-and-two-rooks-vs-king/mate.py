@@ -20,6 +20,7 @@ def transform_input_to_coordinates(index):
     positions[index] = list(map(int, positions[index]))
     print(positions)
 
+
 def get_initial_positions():
     positions[0] = [char for char in input("black king initial position: ")]
     positions[1] = [char for char in input("white king initial position: ")]
@@ -34,23 +35,25 @@ def add_positions_to_table():
         break
 
 
-
 def print_table():
-    print("------------------- ")
+    print("  ------------------- ")
     for i in range(8):
-        print("|", end=" ")
+        print(f"{8 - i} |", end=" ")
         for j in range(8):
             print(table[i][j], end=" ")
         print("|")
-    print("-------------------")
+    print("  -------------------")
+    print("    A B C D E F G H")
+
 
 def get_black_move():
     black_move = [char for char in input("black king move: ")]
     transform_input_to_coordinates(0)
 
+
 def play():
     initialize_table()
-    get_initial_positions()
+    # get_initial_positions()
     # add_positions_to_table()
     while not check_mate:
         print_table()
