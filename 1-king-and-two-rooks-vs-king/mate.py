@@ -35,27 +35,47 @@ def add_positions_to_table():
         break
 
 
-def get_square_color(i, j, counter):
-    if counter % 2 == 0:
+def print_table_top_border():
+    print(Back.WHITE + Fore.BLACK + "                        " + Style.RESET_ALL)
+    print(Back.WHITE + Fore.BLACK + "                        " + Style.RESET_ALL)
+
+
+def print_table_rank_coordinates(i):
+    print(Back.WHITE + Fore.BLACK + f"  {8 - i} ", end="")
+
+
+def get_square_color(square_counter):
+    if square_counter % 2 == 0:
         print(Back.LIGHTGREEN_EX, end="")
     else:
         print(Back.GREEN, end="")
 
 
-def print_table():
-    square_counter = 0
-    print(Back.WHITE + Fore.BLACK + "                        " + Style.RESET_ALL)
-    print(Back.WHITE + Fore.BLACK + "                        " + Style.RESET_ALL)
-    for i in range(8):
-        print(Back.WHITE + Fore.BLACK + f"  {8 - i} ", end="")
-        for j in range(8):
-            get_square_color(i, j, square_counter)
-            square_counter += 1
-            print(table[i][j], end=" ")
-        square_counter += 1
-        print(Back.WHITE + Fore.BLACK + "    " + Style.RESET_ALL)
+def print_table_square(i, j):
+    print(table[i][j], end=" ")
+
+
+def print_table_right_border():
+    print(Back.WHITE + Fore.BLACK + "    " + Style.RESET_ALL)
+
+
+def print_table_files_coordinates():
     print(Back.WHITE + Fore.BLACK + "    A B C D E F G H     " + Style.RESET_ALL)
     print(Back.WHITE + Fore.BLACK + "                        " + Style.RESET_ALL)
+
+
+def print_table():
+    square_counter = 0
+    print_table_top_border()
+    for i in range(8):
+        print_table_rank_coordinates(i)
+        for j in range(8):
+            get_square_color(square_counter)
+            square_counter += 1
+            print_table_square(i, j)
+        square_counter += 1
+        print_table_right_border()
+    print_table_files_coordinates()
 
 
 def get_black_move():
