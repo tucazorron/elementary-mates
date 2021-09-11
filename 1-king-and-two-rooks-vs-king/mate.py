@@ -65,6 +65,10 @@ def get_square_color(square_counter):
 
 
 def print_table_square(rank, file):
+    if table[rank - 1][file - 1] == "k":
+        print(Fore.BLACK, end="")
+    else:
+        print(Fore.WHITE, end="")
     print(table[rank - 1][file - 1], end=" ")
 
 
@@ -97,6 +101,7 @@ def print_table():
 def get_black_move():
     positions[0] = [char for char in input("\n  Your move: ")]
     transform_input_to_coordinates(0)
+
 
 def print_check_mate():
     print("\n  Check Mate: White is victorious.\n")
