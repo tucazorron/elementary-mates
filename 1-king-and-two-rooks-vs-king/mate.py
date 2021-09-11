@@ -1,3 +1,4 @@
+from os import system
 from colorama import Fore, Back, Style
 
 positions = [[] for i in range(4)]
@@ -9,6 +10,12 @@ table = [[i for i in range(8)] for j in range(8)]
 check_mate = False
 
 
+def print_title():
+    system("clear")
+    print("\n  King and Two Rooks vs King")
+    input("\n  Press ENTER: ")
+
+
 def initialize_table():
     for i in range(8):
         for j in range(8):
@@ -18,14 +25,15 @@ def initialize_table():
 def transform_input_to_coordinates(index):
     positions[index][0] = chr(ord(positions[index][0].upper()) - 16)
     positions[index] = list(map(int, positions[index]))
-    print(positions)
 
 
 def get_initial_positions():
-    positions[0] = [char for char in input("black king initial position: ")]
-    positions[1] = [char for char in input("white king initial position: ")]
-    positions[2] = [char for char in input("first rook initial position: ")]
-    positions[3] = [char for char in input("second rook initial position: ")]
+    system("clear")
+    print("\n  Initial Positions")
+    positions[0] = [i for i in input("\n  Black King: ")]
+    positions[1] = [i for i in input("\n  White King: ")]
+    positions[2] = [i for i in input("\n  First Rook: ")]
+    positions[3] = [i for i in input("\n  Second Rook: ")]
     for i in range(4):
         transform_input_to_coordinates(i)
 
@@ -36,12 +44,14 @@ def add_positions_to_table():
 
 
 def print_table_top_border():
-    print(Back.WHITE + Fore.BLACK + "                        " + Style.RESET_ALL)
-    print(Back.WHITE + Fore.BLACK + "                        " + Style.RESET_ALL)
+    print("\n  " + Back.WHITE + Fore.BLACK +
+          "                        " + Style.RESET_ALL)
+    print("  " + Back.WHITE + Fore.BLACK +
+          "                        " + Style.RESET_ALL)
 
 
 def print_table_rank_coordinates(i):
-    print(Back.WHITE + Fore.BLACK + f"  {8 - i} ", end="")
+    print("  " + Back.WHITE + Fore.BLACK + f"  {8 - i} ", end="")
 
 
 def get_square_color(square_counter):
@@ -60,11 +70,14 @@ def print_table_right_border():
 
 
 def print_table_files_coordinates():
-    print(Back.WHITE + Fore.BLACK + "    A B C D E F G H     " + Style.RESET_ALL)
-    print(Back.WHITE + Fore.BLACK + "                        " + Style.RESET_ALL)
+    print("  " + Back.WHITE + Fore.BLACK +
+          "    A B C D E F G H     " + Style.RESET_ALL)
+    print("  " + Back.WHITE + Fore.BLACK +
+          "                        " + Style.RESET_ALL)
 
 
 def print_table():
+    system("clear")
     square_counter = 0
     print_table_top_border()
     for i in range(8):
@@ -84,8 +97,9 @@ def get_black_move():
 
 
 def play():
+    print_title()
     initialize_table()
-    # get_initial_positions()
+    get_initial_positions()
     # add_positions_to_table()
     while not check_mate:
         print_table()
