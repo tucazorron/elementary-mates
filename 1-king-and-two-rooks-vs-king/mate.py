@@ -44,18 +44,18 @@ def get_square_color(i, j, counter):
 
 def print_table():
     square_counter = 0
-    print(Back.WHITE + Fore.BLACK+ "                     " + Style.RESET_ALL)
+    print(Back.WHITE + Fore.BLACK + "                        " + Style.RESET_ALL)
+    print(Back.WHITE + Fore.BLACK + "                        " + Style.RESET_ALL)
     for i in range(8):
-        print(Back.WHITE, end="")
-        print(Fore.BLACK, end="")
-        print(f" {8 - i} ", end="")
+        print(Back.WHITE + Fore.BLACK + f"  {8 - i} ", end="")
         for j in range(8):
             get_square_color(i, j, square_counter)
             square_counter += 1
             print(table[i][j], end=" ")
         square_counter += 1
-        print(Back.WHITE + Fore.BLACK + "  " + Style.RESET_ALL)
-    print(Back.WHITE + Fore.BLACK + "   A B C D E F G H   " + Style.RESET_ALL)
+        print(Back.WHITE + Fore.BLACK + "    " + Style.RESET_ALL)
+    print(Back.WHITE + Fore.BLACK + "    A B C D E F G H     " + Style.RESET_ALL)
+    print(Back.WHITE + Fore.BLACK + "                        " + Style.RESET_ALL)
 
 
 def get_black_move():
